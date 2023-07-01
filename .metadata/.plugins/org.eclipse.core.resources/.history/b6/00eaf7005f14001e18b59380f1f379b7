@@ -1,0 +1,45 @@
+package controller;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import model.Usuario;
+
+public class UsuarioUpdate {
+
+	public static void main(String[] args) {
+
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class)
+				.buildSessionFactory();
+
+		Session session = factory.getCurrentSession();
+
+		try {
+
+			session.beginTransaction();
+
+			//Aqui se indica que se realizara una consulta atravez del objeto session
+			//Ademas se obtiene una referencia donde se utiliza el nombre de la clase y selecciona la Id de la columna para realizar el proceso 
+			Usuario User = session.get(Usuario.class, 1);
+			
+			//METODO UPDATE
+			// User.setApellido("Alvarez");
+
+			// session.createQuery("update Usuario u set u.Password = 'User333' where
+			// u.Password = 'eltcccc'").executeUpdate();
+
+			session.delete(User);
+
+			session.createQuery("delete from Usuario u where u.Apellido = 'Alvarez'").executeUpdate();
+
+			session.getTransaction().commit();
+
+			System.out.println("Tarea Finalizada");
+
+		} finally {
+			session.close();
+		}
+	}
+
+}

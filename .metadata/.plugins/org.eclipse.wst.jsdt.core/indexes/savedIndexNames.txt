@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+C:\Users\PocoX3 Gt\Documents\ProyectoHibernate\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes

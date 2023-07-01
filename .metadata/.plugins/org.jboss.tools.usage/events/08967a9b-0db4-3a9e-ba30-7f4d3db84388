@@ -1,0 +1,11 @@
+#Thu Jun 15 11:08:11 COT 2023
+a=finishWizard
+c=0
+cl=org.eclipse.datatools.enablement.mysql.internal.ui.connection.NewMySQLConnectionProfileWizard
+cmp=usage
+ct=jbt
+d=1686845291216
+l=Wizard class name
+s=1
+v=2.2.500
+vl=How many times the 'Finish' button pressed during the day

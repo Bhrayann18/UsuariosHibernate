@@ -1,0 +1,85 @@
+package model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//Se comienza declarando la clase como una entidad mediante la anotacion entity
+@Entity
+//Se agrega la anotacion Table para indicar el nombre de la tabla a trabajar en la base de datos creada en MySQL
+@Table(name = "producto")
+public class Producto {
+
+	//Atributos con las anotaciones de ID Y Column
+	@Id
+	@Column(name = "id_Producto")
+	private int id_Producto;
+	@Column(name = "Tipo_Producto")
+	private String Tipo_Producto;
+	@Column(name = "Nombre_Producto")
+	private String Nombre_Producto;
+	@Column(name = "Talla_Producto")
+	private String Talla_Producto;
+	@Column(name = "Color_Producto")
+	private String Color_Producto;
+
+	public Producto() {
+
+	}
+
+	public Producto(String tipo_Producto, String nombre_Producto, String talla_Producto, String color_Producto) {
+		super();
+		this.Tipo_Producto = tipo_Producto;
+		this.Nombre_Producto = nombre_Producto;
+		this.Talla_Producto = talla_Producto;
+		this.Color_Producto = color_Producto;
+	}
+
+	public int getId_Producto() {
+		return id_Producto;
+	}
+
+	public void setId_Producto(int id_Producto) {
+		this.id_Producto = id_Producto;
+	}
+
+	public String getTipo_Producto() {
+		return Tipo_Producto;
+	}
+
+	public void setTipo_Producto(String tipo_Producto) {
+		Tipo_Producto = tipo_Producto;
+	}
+
+	public String getNombre_Producto() {
+		return Nombre_Producto;
+	}
+
+	public void setNombre_Producto(String nombre_Producto) {
+		Nombre_Producto = nombre_Producto;
+	}
+
+	public String getTalla_Producto() {
+		return Talla_Producto;
+	}
+
+	public void setTalla_Producto(String talla_Producto) {
+		Talla_Producto = talla_Producto;
+	}
+
+	public String getColor_Producto() {
+		return Color_Producto;
+	}
+
+	public void setColor_Producto(String color_Producto) {
+		Color_Producto = color_Producto;
+	}
+
+	@Override
+	public String toString() {
+		return "Producto [id_Producto=" + id_Producto + ", Tipo_Producto=" + Tipo_Producto + ", Nombre_Producto="
+				+ Nombre_Producto + ", Talla_Producto=" + Talla_Producto + ", Color_Producto=" + Color_Producto + "]";
+	}
+
+}

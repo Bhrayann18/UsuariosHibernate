@@ -1,0 +1,49 @@
+package controller;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import model.Usuario;
+
+public class UsuarioConsulta {
+
+	public static void main(String[] args) {
+
+		// Se crea el session factory para luego instanciar un objeto con el nombre de factory
+		// Luego con el metodo configure se va a seleccionar el archivo de configuracion
+		// de hibernate en el formato XML
+		// Esa configuracion realizada se enlaza con la clase a trabajar que en este
+		// caso es la clase de Usuarios
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class)
+				.buildSessionFactory();
+
+		// Este metodo realizara las operaciones SQL
+		Session session = factory.getCurrentSession();
+
+		try {
+
+			// Aqui la seccion en primer plano debe realizar una transaccion
+			session.beginTransaction();
+
+			Usuario resultado = session.get(Usuario.class, 10);
+			System.out.println("Registro obtenido" + resultado);
+
+			List<Usuario> resultados = session.createQuery("from Usuario").list();
+			System.out.println("Consulta general");
+
+			for (Usuario u : resultados) {
+				System.out.println(u);
+			}
+
+			session.getTransaction().commit();
+
+			System.out.println("Proceso Exitoso");
+		} finally {
+
+			factory.close();
+		}
+	}
+}
